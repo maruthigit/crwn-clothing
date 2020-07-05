@@ -5,11 +5,12 @@ import './App.css';
 import HomePage from './pages/homepage/HomePage';
 import HatsPage from './pages/hatspage/HatsPage';
 import ShopPage from './pages/shoppage/ShopPage';
-
+import HeaderComp from './components/headercomp/HeaderComp';
 
 function App() {
   return (
     <div >
+      <HeaderComp />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/hats" component={HatsPage} />
