@@ -6,8 +6,10 @@ import {auth} from '../../firebase/firebase.utils';
 
 import './headercomp.scss';
 import { FaCrown } from "react-icons/fa";
+import CartIcon from '../carticon/CartIcon';
+import CartDrop from '../cartdrop/CartDrop';
 
-const HeaderComp = ({currentUser}) => (
+const HeaderComp = ({ currentUser, hidden }) => (
     <div className="header">
         <Link className="logo-container" to="/">
             <FaCrown className="logo" />
@@ -25,12 +27,17 @@ const HeaderComp = ({currentUser}) => (
                         className="option" to="/signin"
                     > SIGN IN </Link>
             }
+            <CartIcon/>
         </div>
+        {
+            hidden ? null : <CartDrop />
+        }
     </div>
 );
 
-const mapStateToProps = (state) => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({user:{currentUser}, cart:{hidden}}) => ({
+    currentUser,
+    hidden
 });
 
 export default connect(mapStateToProps)(HeaderComp);
